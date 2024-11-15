@@ -1,8 +1,8 @@
-import './categories.style.scss'
+import React from 'react'
+import './directory.styles.scss'
+import CategoryItem from '../category-item/CategoryItem'
 
-const App = () => {
-
-  const categories = [
+const categories = [
     {
       "id": 1,
       "title": "hats",
@@ -30,23 +30,17 @@ const App = () => {
     }
   ]
 
+const Directory = () => {
   return (
     <div className='categories-container'>
-      {categories.map((cat)=>{
-        return <div key={cat.id} className="category-container">     
-               <img src={`${cat.imageUrl}`} alt="" />
-                <div className="category-body-container">
-                    <h2>{cat.title}</h2>
-                    <p>Shop Now</p>
-                  </div>
-              
-              </div>
-      })}
+    {categories.map((category)=>{
+      return <CategoryItem key={category.id} category={category}/>
+    })}
 
-      
-      
-    </div>
-  );
-};
+    
+    
+  </div>
+  )
+}
 
-export default App;
+export default Directory
