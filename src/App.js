@@ -26,7 +26,7 @@ const App = () => {
         {/* <img /> */}
         <div className='category-body-container'>
           <h2>Womens</h2>
-          <p>Shop Now</p>
+          <p>Shop Next</p>
         </div>
       </div>
       <div className='category-container'>
