@@ -25,8 +25,18 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    try {
+      const { user } = await signInWithGooglePopup();
+      await createUserDocumentFromAuth(user);
+    } catch (error) {
+      if (error.code === 'auth/popup-closed-by-user') {
+        console.log('The popup was closed before completing the sign-in.');
+        alert('You closed the Google sign-in popup. Please try again.');
+      } else {
+        console.error('Google sign-in error:', error.message);
+        alert('An error occurred during Google sign-in. Please try again later.');
+      }
+    }
   };
 
   const handleSubmit = async (event) => {
